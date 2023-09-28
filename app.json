@@ -1,11 +1,12 @@
 {
   "expo": {
-    "name": "التحكم عن بعد",
+    "name": "My Car",
     "slug": "d_c",
-    "version": "1.0.0",
+    "version": "1.7",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+ 
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -25,7 +26,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.deyaa.d_c"
+      "package": "com.smartcar.deyaa",
+      "versionCode":2
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -34,6 +36,7 @@
       "eas": {
         "projectId": "600fa98f-ed69-457b-97e3-c5d2fe2c0343"
       }
-    }
+    },
+    "owner": "deyaa"
   }
 }
