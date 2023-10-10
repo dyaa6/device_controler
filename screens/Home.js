@@ -135,7 +135,7 @@ const Styles = useThemeStyles(theme);
 
   const handleUnLockDown = () => {
     setUnlockActive(true);
-    Vibration.vibrate(120);
+    Vibration.vibrate(80);
         //check if it's you
         new Promise((resolve, reject) => {
           const xhr = new XMLHttpRequest();
@@ -196,7 +196,7 @@ const Styles = useThemeStyles(theme);
   
   const handleLockDown = () => {
     setLockActive(true);
-    Vibration.vibrate(110);
+    Vibration.vibrate(80);
         //check if it's you
         new Promise((resolve, reject) => {
           const xhr = new XMLHttpRequest();
@@ -257,7 +257,7 @@ const Styles = useThemeStyles(theme);
 
   const handleBoxDown = () => {
     setBoxActive(true);
-    Vibration.vibrate(110);
+    Vibration.vibrate(80);
         //check if it's you
         new Promise((resolve, reject) => {
           const xhr = new XMLHttpRequest();
@@ -313,7 +313,7 @@ const Styles = useThemeStyles(theme);
 // when press the run button
   const handlePressIn = () => {
     setPressed(true);
-    Vibration.vibrate(120);
+    Vibration.vibrate(80);
     //setLedThree(true);
     new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -342,7 +342,7 @@ const Styles = useThemeStyles(theme);
 
   const handlePressOut = () => {
     setPressed(false);
-    Vibration.vibrate(120);
+    Vibration.vibrate(80);
     //setLedThree(false);
     new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -699,7 +699,7 @@ const switchTwoOn=()=>{
       />
       <Switch
         trackColor={{ false: '#767577', true: activeColor.secondColor}}
-        thumbColor={activeColor.dark?(isEnabled2 ? "#03078f" : '#9AA3A8'):(isEnabled1 ? activeColor.mainColor : '#f4f3f4')}
+        thumbColor={activeColor.dark?(isEnabled2 ? "#03078f" : '#9AA3A8'):(isEnabled2 ? activeColor.mainColor : '#f4f3f4')}
       ios_backgroundColor="#3e3e3e"
       onValueChange={switchTwoOn}
       value={isEnabled2}

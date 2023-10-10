@@ -15,7 +15,7 @@ const LoginScreen = ({navigation}) => {
   const [showPassword,setShowPassword]=useState(true);
   const [msg,setMsg]=useState('');
 
-  const {theme}=useContext(ThemeContext)
+  const {theme,setUserName}=useContext(ThemeContext)
   let activeColor=Colors[theme.mode];
   const Styles = useThemeStyles(theme);
   //to disable go back
@@ -36,6 +36,7 @@ const LoginScreen = ({navigation}) => {
               setMsg('');
               setPassword('');
               setUsername('');
+              setUserName(username); //in app.js
               AsyncStorage.setItem('isloggedin','true');
               AsyncStorage.setItem('devPass',"0000");
               AsyncStorage.setItem('userName',username);
@@ -71,6 +72,7 @@ const LoginScreen = ({navigation}) => {
         setMsg('');
         setPassword('');
         setUsername('');
+        setUserName(username); //in app.js
         AsyncStorage.setItem('isloggedin','true');
         AsyncStorage.setItem('devPass',password.toString());
         AsyncStorage.setItem('userName',username);
@@ -88,6 +90,7 @@ const LoginScreen = ({navigation}) => {
     setMsg('');
     setPassword('');
     setUsername('');
+    setUserName(username); //in app.js
     AsyncStorage.setItem('isloggedin','true');
     AsyncStorage.setItem('devPass',"0000");
     AsyncStorage.setItem('userName',username);

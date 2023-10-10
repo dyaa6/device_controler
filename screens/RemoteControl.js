@@ -92,6 +92,7 @@ const checkLoginStatus= async ()=>{
               setRunCode(xhr.responseText.split("#")[1]);
               setOpenCode(xhr.responseText.split("#")[2]);
               setLockcode(xhr.responseText.split("#")[3]);
+              setBoxCode(xhr.responseText.split("#")[4]);
             } else {
               setMsg("لا يمكن الإتصال بالسيارة");
               setMsgState(true);

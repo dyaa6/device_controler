@@ -1,8 +1,12 @@
 import react,{useState,useContext,useEffect} from "react";
 import { ThemeContext } from "../components/ThemeContect";
 import useThemeStyles from "../components/Styles";
-import {View,Text,TouchableOpacity, ScrollView, I18nManager, Image,StyleSheet} from 'react-native';
+import {View,Text,TouchableOpacity,Linking, I18nManager, Image,StyleSheet} from 'react-native';
 import Colors from "../components/Colors";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+
+
 
  const About = ()=>{
     const [isEnabled, setIsEnabled] = useState(false);
@@ -21,14 +25,26 @@ import Colors from "../components/Colors";
       };
     return(
     <View 
-    style={{...Styles.body,flex:1,alignItems:"center",justifyContent:"center"}}
-    >       
-    <Text style={{color:activeColor.fontColor,fontWeight:"bold",fontSize:20}}>
-      ضياء
-      </Text>     
-      <Text style={{color:activeColor.fontColor,fontWeight:"bold",fontSize:20}}>
-      07717124094
-     </Text>
+    style={{...Styles.body,flex:1,alignItems:"center"}}
+    >    
+    
+
+  <TouchableOpacity  style={{...Styles.tochable, backgroundColor: activeColor.mainColor}}
+ onPress={()=>{Linking.openURL("https://acsd.hyantalm.com/pruducts/")}}>
+  <MaterialCommunityIcons name="web" size={30} color="#fff" />
+      <Text style={Styles.normalFont}>
+      موقعنا الإلكتروني
+      </Text>
+  </TouchableOpacity>
+    
+  <TouchableOpacity  style={{...Styles.tochable, backgroundColor: activeColor.mainColor}}
+ onPress={()=>{Linking.openURL("https://www.facebook.com/profile.php?id=100090287467770")}}>
+    <FontAwesome5 name="facebook" size={30} color="#fff" />
+    <Text style={Styles.normalFont}>
+    حسابنا على فيسبوك
+</Text>
+</TouchableOpacity>
+ 
      <Image source={require("../assets/acsd.png")} 
                style={Styles.acsd}
                resizeMode="contain"

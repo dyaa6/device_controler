@@ -20,19 +20,18 @@ import Theme from './screens/Theme';
 import { ThemeContext } from './components/ThemeContect';
 import { storeData,getData } from './components/asyncSrorage';
 import * as SplashScreen from "expo-splash-screen"
+import { TouchableOpacity } from 'react-native-gesture-handler';
 I18nManager.forceRTL(false);
 I18nManager.allowRTL(false);
 SplashScreen.preventAutoHideAsync();
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
-  const [userName, setUserName] = React.useState('');
   const { activeColor } = props;
-  React.useEffect(() => {
-    AsyncStorage.getItem('userName').then((name) => {
-      setUserName(name);
-    });
-  }, []);
+  const {newUserName}= props;
+
+
+
 
   const handleLogout = async () => {
     await AsyncStorage.removeItem('isloggedin');
@@ -44,17 +43,39 @@ function CustomDrawerContent(props) {
     <View style={{ flex: 1, backgroundColor: activeColor.mainColor }}>
       <View style={{ marginVertical: 20, marginHorizontal: 15 }}>
         <Text style={{ color: '#fff', fontSize: 20 }}>
-          متصل بإسم {userName}
+          متصل بإسم {newUserName}
         </Text>
       </View>
       <DrawerItemList {...props} />
-      <Button title="تسجيل الخروج" onPress={handleLogout} />
+      <TouchableOpacity onPress={handleLogout}
+      style={{
+        backgroundColor:activeColor.bgColor,
+        width:"80%",
+        justifyContent:"center",
+        alignItems:"center",
+        alignSelf:"center",
+        padding:10,
+        marginTop:15,
+        borderRadius:20
+      }}
+      >
+        <Text style={{color:activeColor.fontColor, fontWeight:"bold"}}>
+        تسجيل الخروج
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+  const [userName, setUserName] = React.useState('');
+  React.useEffect(() => {
+    AsyncStorage.getItem('userName').then((name) => {
+    setUserName(name);
+    });
+  }, []);
 
   React.useEffect(() => {
     // Check if the user is logged in
@@ -89,11 +110,11 @@ export default function App() {
   },[]);
 
   return (
-    <ThemeContext.Provider value={{theme,updateTheme}}>
+    <ThemeContext.Provider value={{theme,updateTheme,setUserName}}>
     <NavigationContainer>
       <Drawer.Navigator
         initialRouteName={'Home'}
-        drawerContent={(props) => <CustomDrawerContent {...props} activeColor={activeColor} />}
+        drawerContent={(props) => <CustomDrawerContent {...props} activeColor={activeColor} newUserName={userName} />}
         screenOptions={{
           headerShown: true,
           headerStyle: { backgroundColor: activeColor.mainColor,borderBottomEndRadius:20,borderBottomStartRadius:20 },

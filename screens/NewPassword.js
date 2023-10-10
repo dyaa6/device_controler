@@ -1,7 +1,7 @@
 import react,{useState,useContext} from "react";
 import { ThemeContext } from "../components/ThemeContect";
 import useThemeStyles from "../components/Styles";
-import {View,Text,StyleSheet,TouchableOpacity, TextInput} from 'react-native';
+import {View,Text,StyleSheet,TouchableOpacity, TextInput,Keyboard} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons';
@@ -111,13 +111,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
       };
       
     return(
-        <View style={{...Styles.formContainer,...Styles.body}}>
+        <View style={{...Styles.formContainer,...Styles.body,padding:120}}>
         <Text style={Styles.title}>
           تغيير كلمة السر
         </Text>
-        <Text style={{color:"red"}}>
-          تذكر أنه في حال نسيت كلمة السر لن تتمكن من استعادتها مجدداً
-          </Text>
+
         <Text> </Text>
         <View style={Styles.inputContainer}>
         <View style={{...Styles.loginFieldContainer,paddingLeft:5}}>
@@ -176,6 +174,9 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
         >
           <Text style={Styles.buttonText}>{isLoading ? 'جارِ حفظ التغييرات..' : 'حفظ التغييرات'}</Text>
         </TouchableOpacity>
+        <Text style={{color:"orange", position:"absolute",bottom:0,textAlign:"right",direction:"rtl",fontSize:13}}>
+        ملحوظة: في حال نسيت كلمة المرور، يمكنك إعادة ضبط الجهاز إلى إعدادات المصنع عن طريق الضغط المستمر على الزر الموجود على الجهاز لمدة خمسة ثوانٍ.
+</Text>
       </View>
     )
 }
