@@ -21,6 +21,7 @@ import { ThemeContext } from './components/ThemeContect';
 import { storeData,getData } from './components/asyncSrorage';
 import * as SplashScreen from "expo-splash-screen"
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import checkAndUpdate from './components/UpdateChecker';
 I18nManager.forceRTL(false);
 I18nManager.allowRTL(false);
 SplashScreen.preventAutoHideAsync();
@@ -82,6 +83,20 @@ export default function App() {
     AsyncStorage.getItem('isloggedin').then((value) => {
       setIsLoggedIn(value === 'true');
     });
+
+    
+// check for updates
+     const appVersion = '2.0';
+
+     // Fetch the server version
+     fetch('https://acsd.hyantalm.com/CarAppUpdate.json')
+       .then(response => response.json())
+       .then(data => {
+        checkAndUpdate(appVersion, data.CurrentVersion); // Call the update checker
+       })
+       .catch(error => {
+         console.error('Error fetching data:', error);
+       });
   }, []);
 
 

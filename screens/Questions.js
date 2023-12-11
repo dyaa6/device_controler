@@ -4,6 +4,7 @@ import useThemeStyles from "../components/Styles";
 import React  from 'react'
 import { Text, View } from 'react-native'
 import Colors from "../components/Colors";
+
 const Questions=()=>{
     const {theme}=useContext(ThemeContext)
     let activeColor=Colors[theme.mode];
