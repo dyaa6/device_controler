@@ -7,7 +7,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 
-
  const About = ()=>{
     const [isEnabled, setIsEnabled] = useState(false);
     const {theme}=useContext(ThemeContext)
